@@ -1,3 +1,4 @@
+[![Build status](https://travis-ci.org/rekurzia/slovak-holidays.svg?branch=master)](https://travis-ci.org/rekurzia/slovak-holidays)
 
 Slovak Holidays
 ===============
