@@ -1,0 +1,23 @@
+{
+    "name": "rekurzia/slovak-holidays",
+    "type": "library",
+    "description": "Simple PHP library/helper for getting Slovak holidays",
+    "keywords": ["holidays", "slovak"],
+    "homepage": "https://github.com/rekurzia/slovak-holidays",
+    "license": "MIT",
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "authors": [
+        {
+            "name": "Vladimír Kriška",
+            "email": "ujovlado@gmail.com"
+        }
+    ],
+    "autoload": {
+        "classmap": ["src/"]
+    },
+    "require-dev": {
+        "nette/tester": "~1.5.0"
+    }
+}
