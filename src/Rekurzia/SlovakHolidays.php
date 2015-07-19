@@ -1,10 +1,8 @@
 <?php
-
 /**
- * Slovak Holidays - Simple PHP library/helper for getting Slovak holidays
- *
- * Copyright (c) 2015 Vladimír Kriška
- * This software is licensed under MIT License.
+ * @link https://github.com/rekurzia/slovak-holidays
+ * @copyright Copyright (c) 2015 Vladimír Kriška
+ * @license MIT License
  */
 
 namespace Rekurzia;
@@ -57,7 +55,7 @@ class SlovakHolidays
 	public static function getHolidays($year = null)
 	{
 		$year = ($year === null ? date('Y') : $year);
-		$easterSunday = (new \DateTime)->setTimestamp(easter_date($year));
+		$easterSunday = (new \DateTime)->setTimestamp(EasterDate::get($year));
 
 		$holidays = [
 			$easterSunday->sub(new \DateInterval('P2D'))->format('Y-m-d') => self::$easterHolidays['friday'],
