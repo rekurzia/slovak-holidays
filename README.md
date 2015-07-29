@@ -22,8 +22,8 @@ Very easy, static:
 ```php
 
 \Rekurzia\SlovakHolidays::getHolidays(); // for current year
-\Rekurzia\SlovakHolidays::getHolidays(2014);
-\Rekurzia\SlovakHolidays::getHolidaysForYearAndMonth(2014, 1);
+\Rekurzia\SlovakHolidays::getHolidays(2014); // only for year
+\Rekurzia\SlovakHolidays::getHolidays(2014, 8); // for year and month
 \Rekurzia\SlovakHolidays::isTodayHoliday(); // date('Y-m-d')
 \Rekurzia\SlovakHolidays::isDayHoliday(2015, 12, 24);
 
