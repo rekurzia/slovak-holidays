@@ -10,7 +10,7 @@ Assert::exception(function() {
 }, 'Rekurzia\SlovakHolidaysException', 'Class cannot be instantiated');
 
 Assert::exception(function() {
-	SlovakHolidays::getHolidaysForYearAndMonth(2015, 13);
+	SlovakHolidays::getHolidays(2015, 13);
 }, 'Rekurzia\SlovakHolidaysException', 'Invalid input year or month');
 
 Assert::exception(function() {
@@ -38,7 +38,7 @@ Assert::same([
 Assert::same([
 	'2015-04-03',
 	'2015-04-06',
-], array_keys(SlovakHolidays::getHolidaysForYearAndMonth(2015, 4)));
+], array_keys(SlovakHolidays::getHolidays(2015, 4)));
 
 Assert::same(false, SlovakHolidays::isDayHoliday(2015, 01, 02));
 Assert::same(false, SlovakHolidays::isDayHoliday(2015, 12, 23));
@@ -67,7 +67,7 @@ Assert::same([
 Assert::same([
 	'2014-04-18',
 	'2014-04-21',
-], array_keys(SlovakHolidays::getHolidaysForYearAndMonth(2014, 4)));
+], array_keys(SlovakHolidays::getHolidays(2014, 4)));
 
 Assert::same(false, SlovakHolidays::isDayHoliday(2014, 03, 30));
 Assert::same(false, SlovakHolidays::isDayHoliday(2014, 10, 02));
@@ -95,11 +95,11 @@ Assert::same([
 
 Assert::same([
 	'2013-03-29',
-], array_keys(SlovakHolidays::getHolidaysForYearAndMonth(2013, 3)));
+], array_keys(SlovakHolidays::getHolidays(2013, 3)));
 
 Assert::same([
 	'2013-04-01',
-], array_keys(SlovakHolidays::getHolidaysForYearAndMonth(2013, 4)));
+], array_keys(SlovakHolidays::getHolidays(2013, 4)));
 
 Assert::same(false, SlovakHolidays::isDayHoliday(2013, 02, 28));
 Assert::same(false, SlovakHolidays::isDayHoliday(2013, 07, 06));

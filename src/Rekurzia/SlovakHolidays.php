@@ -49,12 +49,13 @@ class SlovakHolidays
 
 	/**
 	 * Gets holidays for specified year
-	 * @param int
+	 * @param int $year
+	 * @param int $month
 	 * @return array
 	 */
-	public static function getHolidays($year = null)
+	public static function getHolidays($year = null, $month = null)
 	{
-		$year = ($year === null ? date('Y') : $year);
+		$year = $year ?: date('Y');
 		$easterSunday = (new \DateTime)->setTimestamp(EasterDate::get($year));
 
 		$holidays = [
@@ -68,27 +69,31 @@ class SlovakHolidays
 
 		ksort($holidays);
 
-		return $holidays;
+		if ($month !== null) {
+			return self::getHolidaysForYearAndMonth($holidays, $year, $month);
+		}
+		else {
+			return $holidays;
+		}
 	}
 
 	/**
 	 * Gets holiday for specified year and month
-	 * @param int
-	 * @param int
+	 * @param array $holidays
+	 * @param int $year
+	 * @param int $month
 	 * @return array
 	 * @throws SlovakHolidaysException
 	 */
-	public static function getHolidaysForYearAndMonth($year, $month)
+	private static function getHolidaysForYearAndMonth(array $holidays, $year, $month)
 	{
 		if (!checkdate($month, 1, $year)) {
 			throw new SlovakHolidaysException('Invalid input year or month');
 		}
 
-		$holidays = [];
-
-		foreach (self::getHolidays($year) as $key => $holiday) {
-			if (substr($key, 0, 7) === sprintf("%4d-%02d", $year, $month)) {
-				$holidays[$key] = $holiday;
+		foreach ($holidays as $key => $holiday) {
+			if (substr($key, 0, 7) !== sprintf("%4d-%02d", $year, $month)) {
+				unset($holidays[$key]);
 			}
 		}
 
