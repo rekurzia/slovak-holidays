@@ -38,6 +38,11 @@ class SlovakHolidays
 		'monday' => 'Veľkonočný pondelok'
 	];
 
+	/** @var array */
+	private static $oneOffHolidays = [
+		'2018-10-30' => '100. výročie prijatia Deklarácie slovenského národa'
+	];
+
 	/**
 	 * Constructor to disable instantiation
 	 * @throws SlovakHolidaysException
@@ -65,6 +70,14 @@ class SlovakHolidays
 
 		foreach (self::$fixedHolidays as $key => $holiday) {
 			$holidays[$year . '-' . $key] = $holiday;
+		}
+
+		foreach (self::$oneOffHolidays as $key => $holiday) {
+			$date = date_parse($key);
+
+			if ($date['year'] === $year) {
+				$holidays[$key] = $holiday;
+			}
 		}
 
 		ksort($holidays);
