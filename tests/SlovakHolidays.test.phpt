@@ -3,7 +3,8 @@
 require __DIR__ . '/bootstrap.php';
 
 use Tester\Assert;
-use Rekurzia\SlovakHolidays;
+use Rekurzia\SlovakHolidays\Holidays as SlovakHolidays;
+use Rekurzia\SlovakHolidays\Exception as SlovakHolidaysException;
 
 Assert::same(true, SlovakHolidays::isDayHoliday(2018, 10, 30));
 Assert::same(false, SlovakHolidays::isDayHoliday(2017, 10, 30));
@@ -28,15 +29,15 @@ Assert::same([
 
 Assert::exception(function() {
 	new SlovakHolidays;
-}, 'Rekurzia\SlovakHolidaysException', 'Class cannot be instantiated');
+}, SlovakHolidaysException::class, 'Class cannot be instantiated');
 
 Assert::exception(function() {
 	SlovakHolidays::getHolidays(2015, 13);
-}, 'Rekurzia\SlovakHolidaysException', 'Invalid input year or month');
+}, SlovakHolidaysException::class, 'Invalid input year or month');
 
 Assert::exception(function() {
 	SlovakHolidays::isDayHoliday(2015, 12, 32);
-}, 'Rekurzia\SlovakHolidaysException', 'Invalid input year, month or day');
+}, SlovakHolidaysException::class, 'Invalid input year, month or day');
 
 Assert::same([
 	'2015-01-01',

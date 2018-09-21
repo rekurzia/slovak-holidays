@@ -1,8 +1,8 @@
 <?php
 
-namespace Rekurzia;
+namespace Rekurzia\SlovakHolidays;
 
-class SlovakHolidays
+class Holidays
 {
     /**
      * @var array
@@ -47,11 +47,11 @@ class SlovakHolidays
     /**
      * Constructor to disable instantiation
      *
-     * @throws SlovakHolidaysException
+     * @throws Exception
      */
     public function __construct()
     {
-        throw new SlovakHolidaysException('Class cannot be instantiated');
+        throw new Exception('Class cannot be instantiated');
     }
 
     /**
@@ -99,12 +99,12 @@ class SlovakHolidays
      * @param  int   $year
      * @param  int   $month
      * @return array
-     * @throws SlovakHolidaysException
+     * @throws Exception
      */
     private static function getHolidaysForYearAndMonth(array $holidays, $year, $month)
     {
         if (!checkdate($month, 1, $year)) {
-            throw new SlovakHolidaysException('Invalid input year or month');
+            throw new Exception('Invalid input year or month');
         }
 
         foreach ($holidays as $key => $holiday) {
@@ -123,12 +123,12 @@ class SlovakHolidays
      * @param  int
      * @param  int
      * @return bool
-     * @throws SlovakHolidaysException
+     * @throws Exception
      */
     public static function isDayHoliday($year, $month, $day)
     {
         if (!checkdate($month, $day, $year)) {
-            throw new SlovakHolidaysException('Invalid input year, month or day');
+            throw new Exception('Invalid input year, month or day');
         }
 
         $isHoliday = false;
@@ -147,7 +147,7 @@ class SlovakHolidays
      * Returns if today is holiday
      *
      * @return bool
-     * @throws SlovakHolidaysException
+     * @throws Exception
      */
     public static function isTodayHoliday()
     {

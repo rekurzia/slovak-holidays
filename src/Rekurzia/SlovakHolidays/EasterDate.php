@@ -1,6 +1,6 @@
 <?php
 
-namespace Rekurzia;
+namespace Rekurzia\SlovakHolidays;
 
 class EasterDate
 {

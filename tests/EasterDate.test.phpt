@@ -3,7 +3,7 @@
 require __DIR__ . '/bootstrap.php';
 
 use Tester\Assert;
-use Rekurzia\EasterDate;
+use Rekurzia\SlovakHolidays\EasterDate;
 
 for ($year = 1582; $year <= 10000; $year++) {
 	Assert::same(EasterDate::get($year), getGaussEasterDate($year));
