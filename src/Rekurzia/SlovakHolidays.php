@@ -154,7 +154,3 @@ class SlovakHolidays
         return self::isDayHoliday(date('Y'), date('m'), date('d'));
     }
 }
-
-class SlovakHolidaysException extends \Exception
-{
-}
