@@ -1,9 +1,4 @@
 <?php
-/**
- * @link      https://github.com/rekurzia/slovak-holidays
- * @copyright Copyright (c) 2015 Vladimír Kriška
- * @license   MIT License
- */
 
 namespace Rekurzia;
 
