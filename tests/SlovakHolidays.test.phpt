@@ -5,6 +5,27 @@ require __DIR__ . '/bootstrap.php';
 use Tester\Assert;
 use Rekurzia\SlovakHolidays;
 
+Assert::same(true, SlovakHolidays::isDayHoliday(2018, 10, 30));
+Assert::same(false, SlovakHolidays::isDayHoliday(2017, 10, 30));
+Assert::same([
+	'2018-01-01',
+	'2018-01-06',
+	'2018-03-30',
+	'2018-04-02',
+	'2018-05-01',
+	'2018-05-08',
+	'2018-07-05',
+	'2018-08-29',
+	'2018-09-01',
+	'2018-09-15',
+	'2018-10-30',
+	'2018-11-01',
+	'2018-11-17',
+	'2018-12-24',
+	'2018-12-25',
+	'2018-12-26',
+], array_keys(SlovakHolidays::getHolidays(2018)));
+
 Assert::exception(function() {
 	new SlovakHolidays;
 }, 'Rekurzia\SlovakHolidaysException', 'Class cannot be instantiated');
